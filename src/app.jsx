@@ -12,7 +12,7 @@ const App = () => {
       }}
       className="card bg-light"
     >
-      <div className="card">
+      <div className="">
         <Test></Test>
       </div>
     </div>
