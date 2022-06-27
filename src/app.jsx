@@ -4,6 +4,7 @@ import {
   Routes,
   Route,
   Link,
+  Outlet,
   useParams,
   useLocation,
   useNavigate,
@@ -48,6 +49,7 @@ const User = (props) => {
       <div className="text-center">
         <Link to={`/users/${user.id}/id`}>id</Link>
       </div>
+      <Outlet />
     </div>
   );
 };
@@ -83,7 +85,7 @@ const Users = () => {
       <ul>
         {users.map((user) => (
           <li key={user.id}>
-            <Link to={`/users/${user.id}`} state={{ from: "kldsfj" }}>
+            <Link to={`/users/${user.id}`} state={{ from: "users" }}>
               {user.name}
             </Link>
           </li>
@@ -130,9 +132,10 @@ const RouterView = () => {
       <Route path="about" element={<About />} />
       <Route path="test" element={<Test />} />
       <Route path="users" element={<Users />} />
-      <Route path="users/:id" element={<User />}></Route>
-      <Route path="users/:id/name" element={<UserName />} />
-      <Route path="users/:id/id" element={<UserId />} />
+      <Route path="users/:id" element={<User />}>
+        <Route path="name" element={<UserName />} />
+        <Route path="id" element={<UserId />} />
+      </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
