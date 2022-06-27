@@ -1,7 +1,7 @@
 /* eslint-disable */ /* eslint-disable */
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { increment, decrement } from "../../actions";
+import { increment, decrement } from "./actions";
 
 const ReduxComponent = () => {
   const stateCounter = useSelector((state) => state.counter);
