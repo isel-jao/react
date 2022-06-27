@@ -7,6 +7,7 @@ const ReduxComponent = () => {
   const stateCounter = useSelector((state) => state.counter);
 
   const dispatch = useDispatch();
+
   const incrementCounter = (e) => dispatch(increment(2));
   const decrementCounter = (e) => dispatch(decrement());
 

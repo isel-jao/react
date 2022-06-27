@@ -10,15 +10,7 @@ import {
   useNavigate,
 } from "react-router-dom";
 
-const users = [
-  { id: 1, name: "John" },
-  { id: 2, name: "Sara" },
-  { id: 3, name: "Bob" },
-  { id: 4, name: "Alice" },
-  { id: 5, name: "Tom" },
-  { id: 6, name: "Sam" },
-  { id: 7, name: "Mary" },
-];
+import Users from "./pages/users";
 
 const Home = () => {
   return (
@@ -32,65 +24,6 @@ const About = () => {
   return (
     <div className="text-center">
       <h1>About</h1>
-    </div>
-  );
-};
-
-const User = (props) => {
-  const location = useLocation();
-  console.log(location);
-  const id = parseInt(useParams().id, 10);
-  const user = users.find((user) => user.id === id);
-  return (
-    <div>
-      <div className="text-center">
-        <Link to={`/users/${user.id}/name`}>name</Link>
-      </div>
-      <div className="text-center">
-        <Link to={`/users/${user.id}/id`}>id</Link>
-      </div>
-      <Outlet />
-    </div>
-  );
-};
-
-const UserName = () => {
-  const id = parseInt(useParams().id, 10);
-  const user = users.find((user) => user.id === id);
-  return (
-    <div className="text-center">
-      <h1>{user.name}</h1>
-    </div>
-  );
-};
-
-const UserId = () => {
-  const id = parseInt(useParams().id, 10);
-  const user = users.find((user) => user.id === id);
-  return (
-    <div className="text-center">
-      <h1>userId: {id}</h1>
-    </div>
-  );
-};
-
-const Users = () => {
-  let navigate = useNavigate();
-  const redirUser = (id) => {
-    navigate(`/users/${id}`, { state: { from: "users" } });
-  };
-  return (
-    <div className="text-center">
-      <h1>Users</h1>
-      <ul>
-        {users.map((user) => (
-          <li key={user.id}>
-            <Link to={`/users/${user.id}`} state={{ from: "users" }}>
-              {user.name}
-            </Link>
-          </li>
-        ))}
-      </ul>
     </div>
   );
 };
@@ -132,10 +65,6 @@ const RouterView = () => {
       <Route path="about" element={<About />} />
       <Route path="test" element={<Test />} />
       <Route path="users" element={<Users />} />
-      <Route path="users/:id" element={<User />}>
-        <Route path="name" element={<UserName />} />
-        <Route path="id" element={<UserId />} />
-      </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
