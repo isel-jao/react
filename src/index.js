@@ -1,8 +1,23 @@
+/* eslint-disable */
 import React from "react";
 import { createRoot } from "react-dom/client";
 import App from "./app";
+
+// setup redux store
+import { createStore } from "redux";
+import { Provider } from "react-redux";
+import rootReducer from "./reducers";
+
+const store = createStore(
+  rootReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 function Root() {
-  return <App />;
+  return (
+    <Provider store={store}>
+      <App />
+    </Provider>
+  );
 }
 
 const root = createRoot(document.getElementById("root"));

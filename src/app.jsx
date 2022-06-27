@@ -1,6 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import Test from "./components/use-reducer";
+import Test from "./components/redux";
 const App = () => {
   return (
     <div
